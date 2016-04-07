@@ -24,9 +24,20 @@ gems << [ gem, versions ]
 pp gems
 
 def verify(gem, version)
-  system("cd out && gem fetch #{gem} -v #{version}")
-  system("cd out && gem unpack #{gem}-#{version}.gem")
-  system("cd out && gem spec #{gem}-#{version}.gem > #{gem}-#{version}.gemspec")
+  system(
+    "cd out && gem fetch #{gem} -v #{version}")
+  system(
+    "cd out && gem unpack #{gem}-#{version}.gem")
+  system(
+    "cd out && gem spec #{gem}-#{version}.gem > #{gem}-#{version}.gemspec")
+  system(
+    "cd out && git clone -b v#{version} git@github.com:jmettraux/#{gem}.git #{gem}-#{version}-git")
+  system(
+    "cd out && git diff --no-index #{gem}-#{version}-git/lib #{gem}-#{version}/lib" +
+    " > #{gem}-#{version}-lib.diff")
+  system(
+    "cd out && git diff --no-index #{gem}-#{version}-git/#{gem}.gemspec #{gem}-#{version}/#{gem}.gemspec" +
+    " > #{gem}-#{version}-gemspec.diff")
 end
 
 gems.each do |gem, versions|
