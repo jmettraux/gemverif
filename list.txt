@@ -1,0 +1,10 @@
+
+rufus-scheduler
+  3.0.9 - August 29, 2014 (55 KB)
+  3.0.8 - June 8, 2014 (53 KB)
+  3.0.7 - March 17, 2014 (51 KB)
+  3.0.6
+rufus-lua
+  1.1.2
+  1.1.1
+
