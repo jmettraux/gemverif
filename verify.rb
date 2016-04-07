@@ -1,6 +1,8 @@
 
 require 'pp'
 
+uname = 'jmettraux'
+
 gems = []
 gem = nil
 versions = nil
@@ -31,7 +33,7 @@ def verify(gem, version)
   system(
     "cd out && gem spec #{gem}-#{version}.gem > #{gem}-#{version}.gemspec")
   system(
-    "cd out && git clone -b v#{version} git@github.com:jmettraux/#{gem}.git #{gem}-#{version}-git")
+    "cd out && git clone -b v#{version} git@github.com:#{uname}/#{gem}.git #{gem}-#{version}-git")
   system(
     "cd out && git diff --no-index #{gem}-#{version}-git/lib #{gem}-#{version}/lib" +
     " > #{gem}-#{version}-lib.diff")
